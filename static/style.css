@@ -11,8 +11,18 @@ html {
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
-    background-color: #f8f9fa;
+    /* Change this from #f8f9fa to a dark color so it blends with the particles */
+    background-color: #1a1a1a; 
+    color: #ffffff; /* Make default text white */
+}
+
+#particle-canvas {
+    position: fixed; /* This stops it from sliding when you scroll */
+    top: 0;
+    left: 0;
+    width: 100vw; /* 100% of the viewport width */
+    height: 100vh; /* 100% of the viewport height */
+    z-index: -1; /* Pushes it behind all your text and sections */
 }
 
 /* --- Scroll Animations --- */
@@ -194,7 +204,7 @@ body {
     text-align: center;
 }
 
-.section h2 { margin-bottom: 30px; font-size: 2rem; color: #222; }
+.section h2 { margin-bottom: 30px; font-size: 2rem; color: #ffffff; }
 
 /* --- Responsive Grid for Projects --- */
 .project-grid {
@@ -250,7 +260,7 @@ body {
 
 /* The Back Side */
 .card-back {
-    background-color: #222; /* Dark background for the back */
+    background-color: #7b7b7b; /* Dark background for the back */
     color: white;
     transform: rotateY(180deg); /* Starts already flipped 180 degrees so it's facing away */
 }
