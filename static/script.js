@@ -226,3 +226,45 @@ document.addEventListener("DOMContentLoaded", function() {
         setTimeout(type, 1000); // Start 1 second after loading
     }
 });
+
+// --- Custom Cursor Logic ---
+
+// This listener guarantees the HTML exists before running the script
+document.addEventListener("DOMContentLoaded", function() {
+    const cursorDot = document.querySelector(".cursor-dot");
+    const cursorOutline = document.querySelector(".cursor-outline");
+
+    // Check if the elements were actually found
+    if (!cursorDot || !cursorOutline) {
+        console.error("Cursor error: Could not find .cursor-dot or .cursor-outline in the HTML.");
+        return; 
+    }
+        
+    // 1. Movement: Update left/top coordinates
+    window.addEventListener("mousemove", function (e) {
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        // Apply coordinates directly
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+        
+        // Adding a tiny delay creates a smooth trailing effect
+        setTimeout(() => {
+            cursorOutline.style.left = `${posX}px`;
+            cursorOutline.style.top = `${posY}px`;
+        }, 50);
+    });
+
+    // 2. Interaction: Detect hovers
+    const interactiveElements = document.querySelectorAll('a, button, .card-inner, .navbar, .dropbtn');
+
+    interactiveElements.forEach((el) => {
+        el.addEventListener("mouseover", () => {
+            cursorOutline.classList.add("cursor-link-hover");
+        });
+        el.addEventListener("mouseout", () => {
+            cursorOutline.classList.remove("cursor-link-hover");
+        });
+    });
+});
