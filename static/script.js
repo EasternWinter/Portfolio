@@ -161,3 +161,68 @@ if (canvas) {
     init();
     animate();
 }
+
+// --- Scroll Progress Bar ---
+window.addEventListener('scroll', function() {
+    // Calculate how far down the user has scrolled
+    let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    
+    // Calculate the total scrollable height of the page
+    let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    
+    // Find the percentage and apply it to the width of the bar
+    let scrolled = (winScroll / height) * 100;
+    document.getElementById("myBar").style.width = scrolled + "%";
+});
+
+// --- Typewriter Effect ---
+const textArray = [
+    "I'm a developer who loves building things for the web.", 
+    "I specialize in Computer Science and using modern technologies.", 
+    "I turn ideas into interactive experiences."
+];
+let textIndex = 0;  // Which sentence we are on
+let charIndex = 0;  // Which character we are typing
+let isDeleting = false;
+
+// Timing settings (in milliseconds)
+const typingDelay = 100;
+const erasingDelay = 50;
+const newTextDelay = 2000; // Pause before deleting
+
+function type() {
+    const currentText = textArray[textIndex];
+    
+    if (isDeleting) {
+        charIndex--; // Remove a character
+    } else {
+        charIndex++; // Add a character
+    }
+
+    // Update the HTML text
+    document.getElementById("typewriter-text").textContent = currentText.substring(0, charIndex);
+
+    // Determine how fast to run the next loop
+    let typeSpeed = isDeleting ? erasingDelay : typingDelay;
+
+    // If the sentence is fully typed out
+    if (!isDeleting && charIndex === currentText.length) {
+        typeSpeed = newTextDelay; // Pause at the end
+        isDeleting = true;        // Start deleting next
+    } 
+    // If the sentence is fully deleted
+    else if (isDeleting && charIndex === 0) {
+        isDeleting = false;       // Start typing again
+        textIndex = (textIndex + 1) % textArray.length; // Move to next sentence
+        typeSpeed = 500;          // Brief pause before typing starts
+    }
+
+    setTimeout(type, typeSpeed);
+}
+
+// Start the typewriter loop once the page loads
+document.addEventListener("DOMContentLoaded", function() {
+    if (document.getElementById("typewriter-text")) {
+        setTimeout(type, 1000); // Start 1 second after loading
+    }
+});

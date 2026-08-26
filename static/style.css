@@ -27,6 +27,37 @@ body {
 
 /* --- Scroll Animations --- */
 
+/* --- Scroll Progress Bar --- */
+.progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1); /* Faint background line */
+    z-index: 1000; /* Keeps it above everything, even the navbar */
+}
+
+.progress-bar {
+    height: 4px;
+    background: #4CAF50; /* Your green accent color */
+    width: 0%; /* Starts at 0, JS will change this */
+    border-radius: 0 2px 2px 0;
+}
+
+/* --- Typewriter Cursor Animation --- */
+.blinking-cursor {
+    font-weight: bold;
+    color: #4CAF50;
+    animation: blink 1s step-end infinite;
+}
+
+/* Makes the cursor flash on and off */
+@keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+}
+
 /* The starting state before you scroll to it */
 .slide-hidden {
     opacity: 0;
