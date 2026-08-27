@@ -66,7 +66,7 @@ if (canvas) {
         
         // Move the dot, check mouse proximity, and bounce off walls
         update() {
-            // --- NEW: Mouse Collision Detection ---
+            // --- Mouse Collision Detection ---
             if (mouse.x != undefined && mouse.y != undefined) {
                 let dx = mouse.x - this.x;
                 let dy = mouse.y - this.y;
@@ -110,7 +110,7 @@ if (canvas) {
             let y = (Math.random() * ((canvas.height - size * 2) - (size * 2)) + size * 2);
             let directionX = (Math.random() * 2) - 1;
             let directionY = (Math.random() * 2) - 1;
-            let color = '#4CAF50'; // Green dots
+            let color = '#ff8080'; // Colour of dots
             
             particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
         }
@@ -125,7 +125,7 @@ if (canvas) {
                 
                 if (distance < (canvas.width / 7) * (canvas.height / 7)) {
                     let opacityValue = 1 - (distance / 20000);
-                    ctx.strokeStyle = `rgba(76, 175, 80, ${opacityValue})`; // Green lines fading out
+                    ctx.strokeStyle = `rgba(255, 128, 128, ${opacityValue})`; // Colour of lines fading out
                     ctx.lineWidth = 1;
                     ctx.beginPath();
                     ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
