@@ -1,6 +1,3 @@
-document.getElementById('helloBtn').addEventListener('click', function() {
-    alert("Thanks for visiting my portfolio!");
-});
 // --- Scroll Animations (Intersection Observer) ---
 // 1. Set up the observer to watch elements enter the screen
 const observer = new IntersectionObserver((entries) => {

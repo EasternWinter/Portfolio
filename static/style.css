@@ -237,6 +237,26 @@ body {
 
 .section h2 { margin-bottom: 30px; font-size: 2rem; color: #ffffff; }
 
+/* --- Contact Button --- */
+#helloBtn {
+    display: inline-block;
+    color: #4CAF50;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: 2px solid #4CAF50;
+    padding: 10px 24px;
+    border-radius: 6px;
+    background-color: transparent;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+#helloBtn:hover {
+    background-color: #4CAF50;
+    color: #222;
+    transform: translateY(-2px);
+}
+
 /* --- Responsive Grid for Projects --- */
 .project-grid {
     display: grid;
